@@ -90,8 +90,16 @@ resource "aws_security_group" "my_sg" {
   }
 
   ingress {
+    description = "K8s"
+    from_port   = 30000
+    to_port     = 30000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
     description = "HTTP from specific range"
-    from_port   = 8081
+    from_port   = 8080
     to_port     = 8083
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
